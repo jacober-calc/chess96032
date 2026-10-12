@@ -1,4 +1,4 @@
-# CHESS960 Statefile
+# FREECHESS Statefile
 
 ## CONTENTS
 

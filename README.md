@@ -1,4 +1,4 @@
-# FREECHESS Statefile
+# CHESS960 Statefile
 
 ## CONTENTS
 
@@ -44,6 +44,10 @@ Reinhard Scharnagl devised the standard numbering of the 960 positions, 0 throug
 
 A Scharnagl number is not an arbitrary label. It encodes the square of each piece and can be decoded using only division and remainders.
 
+The chart shows position 518 being decoded. Each step places one piece type; the new pieces are outlined in blue.
+
+![Decoding Scharnagl number 518](assets/decode_518.svg)
+
 ### 2.2 Key Equations
 
 #### Decoding the Scharnagl Number
@@ -79,6 +83,8 @@ Where f is the file number, 0 for file a through 7 for file h. The layout is rea
 
 The standard setup, RNBQKBNR, appears as **12345321**.
 
+![Reading the layout code](assets/layout_code.svg)
+
 #### Random Layout
 
 ```
@@ -102,9 +108,24 @@ The knight code from 0 to 9 selects one of the ten ways to place two knights on 
 
 Each entry is the knight's position among the five empty squares, counting from 0 at the left. The first table is keyed as `111223`; its leading zeros are implied. The second knight is placed first so that it does not shift the count for the first.
 
+![Knight table](assets/knight_table.svg)
+
 ### 2.4 Program Logic Flow
 
 The decoder (LBL Z) builds the layout in variable L, beginning from an empty board (L = 0). A square is empty when its digit in L is zero.
+
+```mermaid
+flowchart TD
+    R["XEQ R: S = IP(960 × RANDOM)"] --> Z
+    L["XEQ L: prompt S"] --> Z
+    SD["XEQ S: prompt A, B, C<br/>SEED, then XEQ R"] --> R
+    Z["LBL Z: Z = S, L = 0"] --> B1["Z mod 4: light-squared bishop<br/>(LBL X, LBL Y)"]
+    B1 --> B2["Z mod 4: dark-squared bishop<br/>(LBL X, LBL Y)"]
+    B2 --> Q["Z mod 6: queen<br/>(LBL X, LBL V)"]
+    Q --> N["Knight code: second knight, then first<br/>(LBL W, LBL V)"]
+    N --> RK["Rook, rook, king on the remaining squares<br/>(LBL V)"]
+    RK --> O["Y: Scharnagl number  X: layout code<br/>RTN to top of program memory"]
+```
 
 **Program Flow:**
 1. Copy S to working register Z and set L = 0

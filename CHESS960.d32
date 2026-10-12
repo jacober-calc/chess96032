@@ -1,0 +1,146 @@
+# STACK
+
+# REGS
+
+# FLAGS
+
+# SEED
+
+# MODE
+MTRIG: DEG
+MFMT: FIX 6
+
+# EQUATION LIST
+EQNPTR: 0
+EQN
+EQNEND
+
+# PROGRAM
+PTR: 0
+PGM
+  LBL R
+  RANDOM
+  960
+  \mul;
+  IP
+  STO S
+  GTO Z
+  LBL L
+  INPUT S
+  LBL Z
+  RCL S
+  STO Z
+  0
+  STO L
+  4
+  XEQ X
+  6
+  XEQ Y
+  4
+  XEQ X
+  7
+  XEQ Y
+  4
+  STO Y
+  6
+  XEQ X
+  XEQ V
+  2
+  STO Y
+  1234234344
+  XEQ W
+  XEQ V
+  111223
+  XEQ W
+  XEQ V
+  1
+  STO Y
+  0
+  XEQ V
+  1
+  XEQ V
+  5
+  STO Y
+  0
+  XEQ V
+  CLx
+  ENTER
+  ENTER
+  RCL S
+  RCL L
+  RTN
+  LBL Y
+  x<>y
+  2
+  \mul;
+  -
+  10\powx;
+  3
+  \mul;
+  STO+ L
+  RTN
+  LBL X
+  STO X
+  RCL Z
+  RCL\div; X
+  IP
+  RCL\mul; X
+  RCL Z
+  x<>y
+  -
+  STO- Z
+  RCL X
+  STO\div; Z
+  R\down;
+  RTN
+  LBL W
+  10
+  RCL- Z
+  10\powx;
+  \div;
+  FP
+  10
+  \mul;
+  IP
+  RTN
+  LBL V
+  1
+  +
+  STO W
+  1E7
+  LBL U
+  ENTER
+  ENTER
+  RCL L
+  x<>y
+  \div;
+  IP
+  10
+  \div;
+  FP
+  x\neq;0?
+  GTO T
+  DSE W
+  GTO T
+  +
+  RCL\mul; Y
+  STO+ L
+  RTN
+  LBL T
+  x<>y
+  10
+  \div;
+  GTO U
+  LBL S
+  INPUT A
+  INPUT B
+  INPUT C
+  RCL A
+  RCL+ B
+  RCL\div; C
+  1000
+  \mul;
+  FP
+  SEED
+  GTO R
+PGMEND

@@ -524,4 +524,4 @@ Thanks to the members of the [SwissMicros forum](https://forum.swissmicros.com) 
 > - [SwissMicros Website](https://www.swissmicros.com)
 > - [DM32 product page](https://www.swissmicros.com/product/model-dm32)
 > - [SwissMicros full products page](https://www.swissmicros.com/products)
-> - [DM32 Online User Manual](https://technical.swissmicros.com/dm32/doc/dm32_user_manual.html
+> - [DM32 Online User Manual](https://technical.swissmicros.com/dm32/doc/dm32_user_manual.html)

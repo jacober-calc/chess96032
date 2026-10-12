@@ -116,15 +116,15 @@ The decoder (LBL Z) builds the layout in variable L, beginning from an empty boa
 
 ```mermaid
 flowchart TD
-    R["XEQ R: S = IP(960 × RANDOM)"] --> Z
-    L["XEQ L: prompt S"] --> Z
-    SD["XEQ S: prompt A, B, C<br/>SEED, then XEQ R"] --> R
-    Z["LBL Z: Z = S, L = 0"] --> B1["Z mod 4: light-squared bishop<br/>(LBL X, LBL Y)"]
-    B1 --> B2["Z mod 4: dark-squared bishop<br/>(LBL X, LBL Y)"]
-    B2 --> Q["Z mod 6: queen<br/>(LBL X, LBL V)"]
-    Q --> N["Knight code: second knight, then first<br/>(LBL W, LBL V)"]
-    N --> RK["Rook, rook, king on the remaining squares<br/>(LBL V)"]
-    RK --> O["Y: Scharnagl number  X: layout code<br/>RTN to top of program memory"]
+    nR["LBL R: S = IP of 960 x RANDOM"] --> nZ
+    nL["LBL L: prompt for S"] --> nZ
+    nS["LBL S: prompt for A, B, C<br/>SEED, then GTO R"] --> nR
+    nZ["LBL Z: copy S to Z, set L = 0"] --> nB1["Z mod 4: light-squared bishop<br/>LBL X and LBL Y"]
+    nB1 --> nB2["Z mod 4: dark-squared bishop<br/>LBL X and LBL Y"]
+    nB2 --> nQ["Z mod 6: queen<br/>LBL X and LBL V"]
+    nQ --> nN["Knight code: second knight, then first<br/>LBL W and LBL V"]
+    nN --> nK["Rook, rook, then king on the remaining squares<br/>LBL V"]
+    nK --> nO["Y: Scharnagl number, X: layout code<br/>RTN to top of program memory"]
 ```
 
 **Program Flow:**

@@ -1,3 +1,5 @@
+![Social Media Preview](assets/freechess32_social_preview.png)
+
 # CHESS960 Statefile
 
 ## CONTENTS
